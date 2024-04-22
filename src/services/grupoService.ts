@@ -14,11 +14,12 @@ class GrupoService {
     const response = await axios.post(`${BASE_URL}`, novoGrupo);
     console.log('Dados do grupo:', novoGrupo);
     
+      
    
 //codigo novo:
     return response.status === 201; // Retorna true se o grupo foi adicionado com sucesso
-  } catch (error) {
-    console.error('Erro ao adicionar grupo:', error);
+    } catch (error) {
+          console.error('Erro ao adicionar grupo:', error);
     return false; // Retorna false em caso de erro  
     
     // //tava comentado daqui:
