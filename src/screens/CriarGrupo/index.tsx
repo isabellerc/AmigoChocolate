@@ -55,6 +55,7 @@ const CriarGrupo = () => {
         
         try {
           const novoGrupo: Grupo = {
+            grupoID: 0,
             nome: nome,
             qtdeMaxima: parseInt(qtdeMaxima), // Converte para número inteiro
             valor: parseFloat(valor), // Converte para número de ponto flutuante

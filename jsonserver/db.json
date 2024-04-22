@@ -60,6 +60,46 @@
       "dataRevelacao": "12/12/2004",
       "descricaoGrupo": "qqq",
       "icone": ""
+    },
+    {
+      "id": "bb32",
+      "grupoID": 0,
+      "nome": "testando codigo",
+      "qtdeMaxima": 111,
+      "valor": 12,
+      "dataRevelacao": "12/12/2004",
+      "descricaoGrupo": "qqq",
+      "icone": ""
+    },
+    {
+      "id": "70b6",
+      "grupoID": 0,
+      "nome": "testando codigo com imagem",
+      "qtdeMaxima": 111,
+      "valor": 12,
+      "dataRevelacao": "12/12/2004",
+      "descricaoGrupo": "qqq",
+      "icone": "WhatsApp Image 2024-04-13 at 12.54.54.jpeg"
+    },
+    {
+      "id": "015e",
+      "grupoID": 0,
+      "nome": "novo grupo",
+      "qtdeMaxima": 111,
+      "valor": 12,
+      "dataRevelacao": "12/12/2004",
+      "descricaoGrupo": "qqq",
+      "icone": ""
+    },
+    {
+      "id": "bc23",
+      "grupoID": 0,
+      "nome": "novo grupo 2",
+      "qtdeMaxima": 111,
+      "valor": 12,
+      "dataRevelacao": "12/12/2004",
+      "descricaoGrupo": "qqq",
+      "icone": "Mascoteh1.png"
     }
   ],
   "Participante": [

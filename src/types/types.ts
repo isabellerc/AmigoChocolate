@@ -11,6 +11,7 @@ export interface User {
 
 
   export interface Grupo {
+    grupoID: number;
     nome: string;
     qtdeMaxima: number;
     valor: number;
