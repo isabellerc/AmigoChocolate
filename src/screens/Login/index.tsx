@@ -1,9 +1,10 @@
+import axios, { AxiosResponse } from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Text, TextInput, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { StackTypes } from '../../routes/stack';
-import { HoverEffect } from 'react-native-gesture-handler';
 import UserService   from '../../services/userService';
+
 
 const Login = () => {
     const [login, setLogin] = useState<string>('');
@@ -14,6 +15,11 @@ const Login = () => {
     
     const navigation = useNavigation<StackTypes>();
 
+    const handleLogin = async () => {
+        navigation.navigate('Home'); //Direciona para a tela Home
+        setLogin(''); //Limpa o campo login
+        setPassword(''); //limpa o campo senha
+        };
     
     const handleCadastro = () => {
         navigation.navigate('Cadastro'); // Direciona para a tela de Cadastro
@@ -22,38 +28,8 @@ const Login = () => {
     const handleEsqueciSenha = () => {
       navigation.navigate('EsqueciSenha'); // Direciona para a tela de Esqueci minha senha
   };
-
-    const handleLogin = async () => {
-
-      if (!login) {
-        setUsernameError(true);
-        return;
-      } else {
-        setUsernameError(false);
-      }
-
-      const isValid = await userService.validateUser(login, password);
-      alert(isValid);
-      if (isValid) {
-        alert('Usuário autenticado com sucesso'); 
-        // Redireciona para a página "Home" após autenticação bem-sucedida
-    navigation.navigate('Home');
-    setLogin('');
-    setPassword('');
-      } else {
-        alert('Usuário e/ou senha inválidos');
-        //Alert.alert('Erro', 'Usuário e/ou senha inválidos');
-      }
-    };
-
-
-    // const navigation = useNavigation<StackTypes>();
-
-    // const handleLogin = () => {
-    //     navigation.navigate('Home');
-    // };
-
-
+   
+ 
     return (
         <View style={styles.container}>
           {/* Adicionando a imagem centralizada acima do título */}
@@ -140,8 +116,9 @@ const styles = StyleSheet.create({
     link: {
         color: 'black',
         marginBottom: 10,
-        
+        textDecorationLine: 'underline',
     }
 });
 
 export default Login;
+

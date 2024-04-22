@@ -1,14 +1,79 @@
 {
-	"User": [
-	  {
-		"id": 1,
-		"username": "h1",
-		"password": "123"
-	  },
-	  {
-		"id": 2,
-		"username": "h2",
-		"password": "456"
-	  }
-   ]
-  }
+  "User": [
+    {
+      "id": "1",
+      "username": "h1",
+      "password": "123",
+      "photo": "teste.png"
+    },
+    {
+      "id": "2",
+      "username": "h2",
+      "password": "456",
+      "photo": "teste.png"
+    },
+    {
+      "id": "3",
+      "username": "h3",
+      "password": "116",
+      "photo": "teste.png"
+    },
+    {
+      "id": "0",
+      "nome": "WALLACE GERALDO DA COSTA",
+      "senha": "aaa",
+      "confirmaSenha": "aaa",
+      "icone": ""
+    },
+    {
+      "id": "0",
+      "nome": "",
+      "senha": "123",
+      "confirmaSenha": "",
+      "icone": ""
+    }
+  ],
+  "Grupo": [
+    {
+      "grupoID": 1,
+      "nome": "Choco da Bit",
+      "qtdeMaxima": 2,
+      "valor": 20,
+      "dataRevelacao": "12/12/1990",
+      "descricaoGrupo": "aaa",
+      "icone": ""
+    },
+    {
+      "grupoID": 2,
+      "nome": "Juventude Batista",
+      "qtdeMaxima": 2,
+      "valor": 20,
+      "dataRevelacao": "12/12/1990",
+      "descricaoGrupo": "aaa",
+      "icone": "Mascoteh1.png"
+    },
+    {
+      "grupoID": 3,
+      "nome": "Feijoada da TI",
+      "qtdeMaxima": 111,
+      "valor": 12,
+      "dataRevelacao": "12/12/2004",
+      "descricaoGrupo": "qqq",
+      "icone": ""
+    }
+  ],
+  "Participante": [
+    {
+      "id": "1",
+      "username": "h1",
+      "password": "123",
+      "photo": "teste.png"
+    },
+    {
+      "id": "2",
+      "username": "h2",
+      "password": "456",
+      "photo": "teste.png"
+    }
+  ]
+}
