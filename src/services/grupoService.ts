@@ -86,15 +86,15 @@ class GrupoService {
     }
 }
 
-  async getGrupoById(grupoID: number): Promise<Grupo> {
-    try {
-        const response: AxiosResponse<Grupo> = await axios.get(`${BASE_URL}?id=${grupoID}`);      
-        return response.data;
-    } catch (error) {
-        console.error('Erro ao buscar grupo pelo ID:', error);
-        return { grupoID: 0, nome: '', qtdeMaxima: 0, valor: 0, dataRevelacao: '', descricaoGrupo: '', icone: ''};
+    async getGrupoById(grupoID: number): Promise<Grupo> {
+      try {
+          const response: AxiosResponse<Grupo> = await axios.get(`${BASE_URL}?grupoID=${grupoID}`);      
+          return response.data;
+      } catch (error) {
+          console.error('Erro ao buscar grupo pelo ID:', error);
+          return { grupoID: 0, nome: '', qtdeMaxima: 0, valor: 0, dataRevelacao: '', descricaoGrupo: '', icone: ''};
 
-    }
+      }
 
 }
 
@@ -110,6 +110,18 @@ class GrupoService {
 
   }
 
+  async updateGrupo(grupoID: number, novoGrupo: Grupo): Promise<boolean> {
+    try {
+        const response = await axios.put(`${BASE_URL}/${grupoID}`, novoGrupo);
+        console.log('Grupo atualizado:', response.data);
+        return response.status === 200; // Retorna true se o grupo foi atualizado com sucesso
+    } catch (error) {
+        console.error('Erro ao atualizar grupo:', error);
+        return false; // Retorna false em caso de erro
+    }
+}
+
 }
 
 export default  GrupoService;
+

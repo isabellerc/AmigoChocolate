@@ -7,8 +7,9 @@ import Login from '../screens/Login';
 import Cadastro from '../screens/Cadastro';
 import EsqueciSenha from '../screens/EsqueciSenha';
 import CriarGrupo from '../screens/CriarGrupo';
-// import Details from '../screens/Details';
 import { RouteProp } from '@react-navigation/native';
+import Details from '../screens/Details';
+import EditarGrupo from '../screens/EditarGrupo';
 
 
 
@@ -24,12 +25,14 @@ type StackNavigation = {
   CriarGrupo: undefined;
   Perfil: undefined;
   Details: { grupoID: number | undefined};
+  EditarGrupo: { grupoID: number | undefined};
 };
 
 export type RootStackParamList = {
   Home: undefined;
   Login: undefined;
-  Details: { grupoID: number };
+  Details: { grupoID: number }; // Certifique-se de que o tipo de grupoID está definido como number
+  EditarGrupo: { grupoID: number }; 
   CriarGrupo: undefined;
 };
 
@@ -41,7 +44,7 @@ type TabNavigation = {
 export type StackTypes = NativeStackNavigationProp<StackNavigation>;
 
 export type StackNavigationProp<ScreenName extends keyof RootStackParamList> = NativeStackNavigationProp<RootStackParamList, ScreenName>;
-//export type StackRouteProp<ScreenName extends keyof RootStackParamList> = RouteProp<RootStackParamList, ScreenName>;
+export type StackRouteProp<ScreenName extends keyof RootStackParamList> = RouteProp<RootStackParamList, ScreenName>;
 // export type StackRouteProp<RouteName extends keyof RootStackParamList> = RouteProp<RootStackParamList, RouteName>;
 
 
@@ -54,9 +57,10 @@ export default function StackComponent(){
               <Stack.Screen  name="Cadastro" component={Cadastro} />
               <Stack.Screen  name="CriarGrupo" component={CriarGrupo}/>
               <Stack.Screen  name="EsqueciSenha" component={EsqueciSenha} />
-              {/* <Stack.Screen  name="Details" component={Details} /> */}
-              
-
+              <Stack.Screen  name="Details" initialParams={{ grupoID: 1 }} component={Details} />
+              <Stack.Screen  name="EditarGrupo" initialParams={{ grupoID: 1 }} component={EditarGrupo} />
+              {/* <Stack.Screen  name="Details" component={Details} />
+              <Stack.Screen  name="EditarGrupo" component={EditarGrupo} /> */}
           </Stack.Navigator>
       </NavigationContainer>
 

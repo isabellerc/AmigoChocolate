@@ -32,7 +32,7 @@ const Login = () => {
  
     return (
         <View style={styles.container}>
-          {/* Adicionando a imagem centralizada acima do título */}
+          
           <Image source={require('../../../assets/images/logoApp2.0.png')} style={styles.image} />
 
             <Text style={styles.title}>Bem-vindo!</Text>
