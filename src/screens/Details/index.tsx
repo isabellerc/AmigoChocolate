@@ -205,17 +205,19 @@ import { View, Text , Image, StyleSheet, TouchableOpacity, Alert} from 'react-na
 import { Grupo } from '../../types/types';
 import GrupoService from '../../services/grupoService';
 import { useNavigation } from '@react-navigation/native';
+// import {StakeTypes} from '../../routes/stack';
+import { StackTypes } from '../../routes/stack';
 
 const caixaPresente = require('../../../assets/images/caixaPresente.png');
 
 const Details = ({ route }: any) => {
-    
-    const navigation = useNavigation();
+    const navigation = useNavigation<StackTypes>();
     const [grupo, setGrupo] = useState<Grupo>(); // Estado para armazenar os dados do grupo
     const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
     const [error, setError] = useState<string | null>(null); // Estado para armazenar mensagens de erro
     
     const grupoService = new GrupoService();
+    
 
     useEffect(() => {
         // Função assíncrona para buscar o grupo pelo ID
@@ -244,10 +246,6 @@ const Details = ({ route }: any) => {
     }
     
     
-    
-    
-    
-
     return (
         <View style={styles.container}>
             {loading ? (

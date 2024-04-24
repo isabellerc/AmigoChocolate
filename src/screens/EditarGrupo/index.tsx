@@ -224,13 +224,49 @@ const EditarGrupo = ({ route }: any) => {
     const [novaDescricaoGrupo, setNovaDescricaoGrupo] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    
+
+
 
     const grupoService = new GrupoService();
 
+    // useEffect(() => {
+    //     setGrupoID(route.params.grupoID);
+    //     fetchGrupo(route.params.grupoID);
+    // }, [route.params.grupoID]);
+
     useEffect(() => {
-        setGrupoID(route.params.grupoID);
         fetchGrupo(route.params.grupoID);
+        setGrupoID(route.params.grupoID);
+
     }, [route.params.grupoID]);
+    
+    
+
+    // const fetchGrupo = async (grupoID: number) => {
+    //     setLoading(true);
+    //     try {
+    //         const fetchedGrupo: Grupo = await grupoService.getGrupoById(grupoID);
+    //         if (fetchedGrupo) {
+    //             setNovoNome(fetchedGrupo.nome || '');
+    //             // setNovaQuantidadeMaxima(fetchedGrupo.qtdeMaxima.toString());
+    //             // setNovoValor(fetchedGrupo.valor.toString());
+    //             setNovaQuantidadeMaxima(fetchedGrupo.qtdeMaxima ? fetchedGrupo.qtdeMaxima.toString() : '');
+    //             setNovoValor(fetchedGrupo.valor ? fetchedGrupo.valor.toString() : '');
+
+    //             setNovaDataRevelacao(fetchedGrupo.dataRevelacao);
+    //             setNovaDescricaoGrupo(fetchedGrupo.descricaoGrupo || '');
+    //         } else {
+    //             setError('Grupo não encontrado.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Erro ao buscar grupo:', error);
+    //         setError('Erro ao buscar grupo. Tente novamente mais tarde.');
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
+
 
     const fetchGrupo = async (grupoID: number) => {
         setLoading(true);
@@ -238,8 +274,8 @@ const EditarGrupo = ({ route }: any) => {
             const fetchedGrupo: Grupo = await grupoService.getGrupoById(grupoID);
             if (fetchedGrupo) {
                 setNovoNome(fetchedGrupo.nome || '');
-                setNovaQuantidadeMaxima(fetchedGrupo.qtdeMaxima.toString());
-                setNovoValor(fetchedGrupo.valor.toString());
+                setNovaQuantidadeMaxima(fetchedGrupo.qtdeMaxima ? fetchedGrupo.qtdeMaxima.toString() : '');
+                setNovoValor(fetchedGrupo.valor ? fetchedGrupo.valor.toString() : '');
                 setNovaDataRevelacao(fetchedGrupo.dataRevelacao);
                 setNovaDescricaoGrupo(fetchedGrupo.descricaoGrupo || '');
             } else {
@@ -252,9 +288,14 @@ const EditarGrupo = ({ route }: any) => {
             setLoading(false);
         }
     };
+    
+
+    // const handleEdit = async (grupoID:number) => {
+
 
     //const handleEdit = async ()
-    const handleEdit = async (grupoID:number) => {
+    // const handleEdit = async (grupoID:number) => {
+    const handleEdit = async () => {
         try {
             const novoGrupo: Grupo = {
                 grupoID: grupoID,
@@ -321,6 +362,7 @@ const EditarGrupo = ({ route }: any) => {
                         onChangeText={setNovaDescricaoGrupo}
                         placeholder="Descrição"
                     />
+                    {/* <TouchableOpacity onPress={handleEdit(item.grupoID)}> */}
                     <TouchableOpacity onPress={handleEdit}>
                         <Text style={styles.saveButton}>Salvar</Text>
                     </TouchableOpacity>

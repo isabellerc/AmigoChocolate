@@ -57,10 +57,10 @@ export default function StackComponent(){
               <Stack.Screen  name="Cadastro" component={Cadastro} />
               <Stack.Screen  name="CriarGrupo" component={CriarGrupo}/>
               <Stack.Screen  name="EsqueciSenha" component={EsqueciSenha} />
-              <Stack.Screen  name="Details" initialParams={{ grupoID: 1 }} component={Details} />
-              <Stack.Screen  name="EditarGrupo" initialParams={{ grupoID: 1 }} component={EditarGrupo} />
-              {/* <Stack.Screen  name="Details" component={Details} />
-              <Stack.Screen  name="EditarGrupo" component={EditarGrupo} /> */}
+              {/* <Stack.Screen  name="Details" initialParams={{ grupoID: 1 }} component={Details} />
+              <Stack.Screen  name="EditarGrupo" initialParams={{ grupoID: 1 }} component={EditarGrupo} /> */}
+              <Stack.Screen  name="Details" component={Details} />
+              <Stack.Screen  name="EditarGrupo" component={EditarGrupo} />
           </Stack.Navigator>
       </NavigationContainer>
 
