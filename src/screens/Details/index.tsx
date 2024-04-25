@@ -276,11 +276,6 @@ const habilitarEdicao = () => {
     }, [route.params.grupoID]);
 
   
-        
-
-
-
-
     const handleEdit = () => {
         setEdicaoHabilitada(true); // Habilita a edição dos campos quando o botão "Editar" é pressionado
         // Inicializa os campos editados com os valores atuais do grupo
