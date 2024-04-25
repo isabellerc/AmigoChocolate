@@ -3,15 +3,15 @@ import { Text, View, StyleSheet, Button, TextInput, TouchableOpacity } from 'rea
 import { StackTypes } from '../../routes/stack';
 import { useState } from 'react';
 
-const EsqueciSenha = () => {
+const EnviarConvite = () => {
 
     const navigation = useNavigation<StackTypes>();
     const [email, setEmail] = useState<string>('');
-    
 return (
     <View style={styles.container}>
-         <Text style={styles.title}>Esqueci minha senha</Text>
+         <Text style={styles.title}>Enviar convite</Text>
 
+            <Text>Insira o e-mail do amigo que deseja convidar:</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Email"
@@ -21,7 +21,7 @@ return (
 
             {/* //inserir abaixo: onPress={handleXXXX} */}
             <TouchableOpacity style={styles.button} activeOpacity={0.1}>
-                <Text style={styles.buttonText}>Enviar e-mail</Text>
+                <Text style={styles.buttonText}>Enviar convite</Text>
             </TouchableOpacity>
     </View>
 
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#white',
+        backgroundColor: 'white',
     },
     
     title: {
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
 
 
 
-export default EsqueciSenha;
+export default EnviarConvite;

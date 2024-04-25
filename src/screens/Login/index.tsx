@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ffff',
+        backgroundColor: 'white',
     },
 
     image: {
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         width: '80%',
         height: 40,
         borderColor: '#dce0e6',
-        backgroundColor: '#dce0e6',
+        backgroundColor: '#FFCFEB',
         borderWidth: 1,
         borderRadius: 8,
         marginBottom: 20,

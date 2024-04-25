@@ -10,6 +10,9 @@ import CriarGrupo from '../screens/CriarGrupo';
 import { RouteProp } from '@react-navigation/native';
 import Details from '../screens/Details';
 import EditarGrupo from '../screens/EditarGrupo';
+import EnviarConvite from '../screens/EnviarConvite';
+import { TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -24,6 +27,7 @@ type StackNavigation = {
   Inicial: undefined;
   CriarGrupo: undefined;
   Perfil: undefined;
+  EnviarConvite: undefined;
   Details: { grupoID: number | undefined};
   EditarGrupo: { grupoID: number | undefined};
 };
@@ -31,6 +35,7 @@ type StackNavigation = {
 export type RootStackParamList = {
   Home: undefined;
   Login: undefined;
+  EnviarConvite: undefined;
   Details: { grupoID: number }; // Certifique-se de que o tipo de grupoID está definido como number
   EditarGrupo: { grupoID: number }; 
   CriarGrupo: undefined;
@@ -54,13 +59,14 @@ export default function StackComponent(){
           <Stack.Navigator>
               <Stack.Screen  name="Login" component={Login}   options={{headerShown: false }}  />
               <Stack.Screen  name="Home" component={Home} />
-              <Stack.Screen  name="Cadastro" component={Cadastro} />
-              <Stack.Screen  name="CriarGrupo" component={CriarGrupo}/>
-              <Stack.Screen  name="EsqueciSenha" component={EsqueciSenha} />
+              <Stack.Screen  name="Cadastro" component={Cadastro} options={{headerBackTitleVisible: false}}/>
+              <Stack.Screen  name="CriarGrupo" component={CriarGrupo}options={{headerBackTitleVisible: false}}/>
+              <Stack.Screen  name="EsqueciSenha" component={EsqueciSenha} options={{headerBackTitleVisible: false}}/>
+              <Stack.Screen name="EnviarConvite" component={EnviarConvite} options={{headerBackTitleVisible: false}}/>
               {/* <Stack.Screen  name="Details" initialParams={{ grupoID: 1 }} component={Details} />
               <Stack.Screen  name="EditarGrupo" initialParams={{ grupoID: 1 }} component={EditarGrupo} /> */}
-              <Stack.Screen  name="Details" component={Details} />
-              <Stack.Screen  name="EditarGrupo" component={EditarGrupo} />
+              <Stack.Screen  name="Details" component={Details} options={{headerBackTitleVisible: false}}/>
+              <Stack.Screen  name="EditarGrupo" component={EditarGrupo} options={{headerBackTitleVisible: false}}/>
           </Stack.Navigator>
       </NavigationContainer>
 

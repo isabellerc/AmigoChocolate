@@ -10,7 +10,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import {Grupo} from '../../types/types';
 
 
-const caixaPresente = require('../../../assets/images/caixaPresente.png');
+const caixaPresente = require('../../../assets/images/caixaPresente.jpg');
 
 
 const CriarGrupo = () => {
@@ -95,43 +95,45 @@ return (
             </View>
 
             
+            <Text style={styles.label}>Nome:</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Nome"
                 onChangeText={setNome}
                 value={nome}
             />
+
+            <Text style={styles.label}>Quantidade máxima:</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Quantidade máxima"
                 onChangeText={setQtdeMax}
                 value={qtdeMaxima}
             />
+
+            <Text style={styles.label}>Valor Chocolate:</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Valor Chocolate"
                 onChangeText={setValor}
                 value={valor}
             />
-            
+
+            <Text style={styles.label}>Data Revelação:</Text>
             <TextInputMask
                 style={styles.input}
-                placeholder="Data Revelação"
                 type={'datetime'}
                 options={{
                     format: 'DD/MM/YYYY'
                 }}
-
                 value={dataRevelacao}
                 onChangeText={(text) => setDataRevelacao(text)}
             />
 
+            <Text style={styles.label}>Descrição do grupo:</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Descrição do grupo"
                 onChangeText={setDescricao}
                 value={descricaoGrupo}
             />
+
 
 
             <TouchableOpacity onPress={handleUpload} style={styles.button} activeOpacity={0.1}>
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#white',
+        backgroundColor: 'white',
     },
     
     title: {
@@ -161,19 +163,23 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     input: {
-        width: '80%',
+        width: '60%',
         height: 40,
         borderColor: '#dce0e6',
-        backgroundColor: '#dce0e6',
+        backgroundColor: '#FFCFEB',
         borderWidth: 1,
         borderRadius: 8,
         marginBottom: 20,
         paddingHorizontal: 10,
     },
+    label: {
+        fontSize: 14,
+        alignSelf: 'center'
+    },
 
     imageContainer: {
-        width: 120,
-        height: 120,
+        width: 100,
+        height: 100,
         marginBottom: 10,
         borderRadius: 100, // fazendo a borda circular
         overflow: 'hidden', // garantindo que a imagem fique dentro do círculo
@@ -184,15 +190,13 @@ const styles = StyleSheet.create({
     },
 
     imagePlaceholder: {
-        width: 120, // ajuste conforme necessário
-        height: 120, // ajuste conforme necessário
+        width: 100, // ajuste conforme necessário
+        height: 100, // ajuste conforme necessário
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 100, // mantém o formato circular
         backgroundColor: '#dce0e6', // define uma cor de fundo para o contêiner
     },
-    
-    
 
     datePicker: {
         width: '80%',
@@ -225,3 +229,4 @@ const styles = StyleSheet.create({
 });
 
 export default CriarGrupo;
+

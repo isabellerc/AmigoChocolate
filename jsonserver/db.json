@@ -31,6 +31,20 @@
       "senha": "123",
       "confirmaSenha": "",
       "icone": ""
+    },
+    {
+      "id": 0,
+      "nome": "teste",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": 0,
+      "nome": "teste",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
     }
   ],
   "Grupo": [
@@ -60,51 +74,6 @@
       "dataRevelacao": "12/12/2004",
       "descricaoGrupo": "qqq",
       "icone": ""
-    },
-    {
-      "grupoID": 4,
-      "nome": "testando codigo",
-      "qtdeMaxima": 111,
-      "valor": 12,
-      "dataRevelacao": "12/12/2004",
-      "descricaoGrupo": "qqq",
-      "icone": ""
-    },
-    {
-      "grupoID": 5,
-      "nome": "testando codigo com imagem",
-      "qtdeMaxima": 111,
-      "valor": 12,
-      "dataRevelacao": "12/12/2004",
-      "descricaoGrupo": "qqq",
-      "icone": "WhatsApp Image 2024-04-13 at 12.54.54.jpeg"
-    },
-    {
-      "grupoID": 6,
-      "nome": "novo grupo",
-      "qtdeMaxima": 111,
-      "valor": 12,
-      "dataRevelacao": "12/12/2004",
-      "descricaoGrupo": "qqq",
-      "icone": ""
-    },
-    {
-      "grupoID": 7,
-      "nome": "novo grupo 2",
-      "qtdeMaxima": 111,
-      "valor": 12,
-      "dataRevelacao": "12/12/2004",
-      "descricaoGrupo": "qqq",
-      "icone": "Mascoteh1.png"
-    },
-    {
-      "grupoID": 8,
-      "nome": "teste imagem",
-      "qtdeMaxima": 12,
-      "valor": 12,
-      "dataRevelacao": "12/12/2002",
-      "descricaoGrupo": "qqq",
-      "icone": "Mascoteh1.png"
     }
   ],
   "Participante": [
