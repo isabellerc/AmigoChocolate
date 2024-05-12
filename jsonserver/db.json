@@ -33,15 +33,78 @@
       "icone": ""
     },
     {
-      "id": 0,
+      "id": "0",
       "nome": "teste",
       "senha": "123",
       "confirmaSenha": "123",
       "icone": ""
     },
     {
-      "id": 0,
+      "id": "0",
       "nome": "teste",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": "0",
+      "nome": "Isabelle",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": "0",
+      "nome": "H1",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": "0",
+      "nome": "Humberto Melo",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": "0",
+      "nome": "Isabelle Costa",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": 0,
+      "nome": "Isabelle Teste Email",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": 0,
+      "nome": "Teste",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": 0,
+      "nome": "Isabelle Teste",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": 0,
+      "nome": "Humberto",
+      "senha": "123",
+      "confirmaSenha": "123",
+      "icone": ""
+    },
+    {
+      "id": 0,
+      "nome": "Testando",
       "senha": "123",
       "confirmaSenha": "123",
       "icone": ""
@@ -55,7 +118,8 @@
       "valor": 20,
       "dataRevelacao": "12/12/1990",
       "descricaoGrupo": "aaa",
-      "icone": ""
+      "icone": "",
+      "id": "6c94"
     },
     {
       "grupoID": 2,
@@ -64,7 +128,8 @@
       "valor": 20,
       "dataRevelacao": "12/12/1990",
       "descricaoGrupo": "aaa",
-      "icone": "Mascoteh1.png"
+      "icone": "Mascoteh1.png",
+      "id": "f784"
     },
     {
       "grupoID": 3,
@@ -73,6 +138,37 @@
       "valor": 12,
       "dataRevelacao": "12/12/2004",
       "descricaoGrupo": "qqq",
+      "icone": "",
+      "id": "1974"
+    },
+    {
+      "id": "fb13",
+      "grupoID": 0,
+      "nome": "Grupo Teste",
+      "qtdeMaxima": 20,
+      "valor": 25,
+      "dataRevelacao": "02/05/2024",
+      "descricaoGrupo": "descrição",
+      "icone": ""
+    },
+    {
+      "id": "1160",
+      "grupoID": 0,
+      "nome": "Grupo Teste 2",
+      "qtdeMaxima": 50,
+      "valor": 10,
+      "dataRevelacao": "02/05/2024",
+      "descricaoGrupo": "teste",
+      "icone": ""
+    },
+    {
+      "id": "168b",
+      "grupoID": 0,
+      "nome": "Grupo Teste 3",
+      "qtdeMaxima": 20,
+      "valor": 20,
+      "dataRevelacao": "02/05/2024",
+      "descricaoGrupo": "teste",
       "icone": ""
     }
   ],

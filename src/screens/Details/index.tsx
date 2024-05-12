@@ -1,224 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import { View, Text , Image, StyleSheet, TouchableOpacity, Alert} from 'react-native';
-// import { Grupo } from '../../types/types';
-// import GrupoService from '../../services/grupoService';
-// import { useNavigation } from '@react-navigation/native';
-// import { StackTypes } from '../../routes/stack';
-// import { TextInput } from 'react-native-gesture-handler';
-// import { Ionicons } from '@expo/vector-icons';
-
-
-// const caixaPresente = require('../../../assets/images/caixaPresente.jpg');
-
-// const Details = ({ route }: any) => {
-//     const navigation = useNavigation<StackTypes>();
-//     const [grupo, setGrupo] = useState<Grupo>(); // Estado para armazenar os dados do grupo
-//     const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
-//     const [error, setError] = useState<string | null>(null); // Estado para armazenar mensagens de erro
-    
-//     const [edicaoHabilitada, setEdicaoHabilitada] = useState(false);
-
-//     const grupoService = new GrupoService();
-    
-
-//     useEffect(() => {
-//         // Função assíncrona para buscar o grupo pelo ID
-//         const fetchGrupo = async () => {
-//             try {
-//                 const fetchedGrupo: Grupo = await grupoService.getGrupoById(route.params.grupoID || 0); // Usamos o operador de coalescência nula para fornecer um valor padrão
-//                 if (fetchedGrupo != null && Array.isArray(fetchedGrupo)) {                
-//                     setGrupo(fetchedGrupo[0]);
-//                 } else {
-//                     setError('Grupo não encontrado ' + route.params.grupoID + '.');
-//                 }
-//             } catch (error) {
-//                 console.error('Erro ao buscar grupo:', error);
-//                 setError('Erro ao buscar grupo. Tente novamente mais tarde.');
-//             } finally {
-//                 setLoading(false);
-//             }
-//         };
-
-//         // Chamada da função para buscar o usuário quando o componente for montado
-//         fetchGrupo();
-//     }, [route.params.grupoID]); // Passamos route.params.grupoID como dependência para useEffect
-
-    
-//     // const handleEdit = (grupoID: number) => {
-//     //     navigation.navigate('EditarGrupo', { grupoID: grupoID });
-//     // };
-
-//     const handleEdit = (grupoID: number) => {
-//         setEdicaoHabilitada(true); // Habilita a edição dos campos quando o botão "Editar" é pressionado
-//     };
-    
-    
-    
-//     const handleConvite = () => {
-//         navigation.navigate('EnviarConvite'); // Direciona para a tela de Cadastro
-//     };
-    
-
-
-// return (
-//     <View style={styles.container}>
-//         {loading ? (
-//             <Text>Carregando...</Text>
-//         ) : error ? (
-//             <Text>{error}</Text>
-//         ) : (
-//             grupo && (
-//                 <View style={styles.container}>
-//                     <View style={styles.buttonContainer}>
-//                         <TouchableOpacity style={styles.editButton} onPress={() => grupo?.grupoID && handleEdit(grupo.grupoID)}>
-//                             <Ionicons name="pencil" size={20} color="white" /> {/* Ícone de lápis */}
-//                         </TouchableOpacity>
-
-//                         <TouchableOpacity style={styles.editButton} onPress={() => handleConvite()}>
-//                             <Ionicons name="paper-plane" size={20} color="white" /> {/* Ícone de compartilhar */}
-//                         </TouchableOpacity>
-//                     </View>
-
-//                     <Image style={styles.photo} source={caixaPresente} />
-                    
-//                      <Text style={styles.label}>ID:</Text>
-//                      <TextInput
-//                         style={styles.input}
-//                         value={grupo?.grupoID.toString()}
-//                         editable={edicaoHabilitada} // Define o campo como não editável
-//                     />
-
-//                     <Text style={styles.label}>Nome:</Text>
-//                     <TextInput
-//                         style={styles.input}
-//                         value={grupo?.nome || "-"}
-//                         editable={edicaoHabilitada}
-//                     />
-
-//                     <Text style={styles.label}>Quantidade Máxima:</Text>
-//                     <TextInput
-//                         style={styles.input}
-//                         value={grupo?.qtdeMaxima?.toString()}
-//                         editable={edicaoHabilitada}
-//                     />
-
-//                     <Text style={styles.label}>Valor:</Text>
-//                     <TextInput
-//                         style={styles.input}
-//                         value={grupo?.valor?.toString()}
-//                         editable={edicaoHabilitada}
-//                     />
-
-//                     <Text style={styles.label}>Data de Revelação:</Text>
-//                     <TextInput
-//                         style={styles.input}
-//                         value={grupo?.dataRevelacao || "-"}
-//                         editable={edicaoHabilitada}
-//                     />
-
-//                     <Text style={styles.label}>Descrição do Grupo:</Text>
-//                     <TextInput
-//                         style={styles.input}
-//                         value={grupo?.descricaoGrupo || "-"}
-//                         editable={edicaoHabilitada}
-//                     />
-
-//                     </View>
-//                 ))}
-//         </View>
-//     );
-// };
-
- 
-
-// const styles = StyleSheet.create({
-//         container: {
-//             flex: 1,
-//             justifyContent: 'center',
-//             alignItems: 'center',
-//             backgroundColor: 'white',
-//         },
-//         buttonContainer: {
-//             flexDirection: 'row',
-//             justifyContent: 'flex-end',
-//             width: '100%', // Ocupa toda a largura disponível
-//             paddingLeft: 230, // Adiciona margem direita para afastar os botões da borda da tela
-//             marginBottom: 20, // Adiciona margem inferior entre os botões e o conteúdo abaixo
-//         },
-//         editButton: {
-//             width: 40,
-//             height: 40,
-//             borderRadius: 20,
-//             backgroundColor: '#df59aa',
-//             justifyContent: 'center',
-//             alignItems: 'center',
-//             marginLeft: 10, // Adiciona margem entre os botões
-//         },
-    
-    
-//     photo: {
-//         width: 80,
-//         height: 80,
-//         borderRadius: 35,
-//         marginRight: 10,
-//         alignSelf: 'center', // Adiciona esta propriedade para centralizar a foto horizontalmente
-//         marginBottom: 10,
-        
-//     },
-   
-//     input: {
-//         width: '80%',
-//         height: 30,
-//         borderColor: '#dce0e6',
-//         backgroundColor: '#FFCFEB',
-//         borderWidth: 1,
-//         borderRadius: 8,
-//         marginBottom: 15,
-//         paddingHorizontal: 20,
-//         textAlignVertical: 'bottom',
-//         alignSelf: 'center'
-//     },
-//     label: {
-//         fontSize: 14,
-//         fontWeight: 'bold',
-//         alignSelf: 'center'
-//     },
-//     // container: {
-//     //     flex: 1,
-//     //     justifyContent: 'center',
-//     //     alignItems: 'center',
-//     //     backgroundColor: 'white',
-//     // },
-//     // editButton: {
-//     //     borderRadius: 25,
-//     //     backgroundColor: '#df59aa',
-//     //     justifyContent: 'center',
-//     //     alignItems: 'center',
-//     //     borderWidth: 1,
-//     //     borderColor: '#df59aa',
-//     //     marginBottom: 5,
-//     //     marginTop: 5,
-//     //     alignSelf: 'center',
-//     //     padding: 5, // Adicionando espaço interno para acomodar o ícone
-//     // },
-
-//     // buttonContainer: {
-//     //     flexDirection: 'row',
-//     // justifyContent: 'flex-end', // Alinha o contêiner à direita
-//     // width: '38%',
-//     // alignSelf: 'center',
-//     // marginBottom: 20,
-//     // },
-    
-    
-//     buttonText: {
-//         color: 'white',
-//         fontSize: 16,
-//     }
-// });
-
-// export default Details;
-
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Alert, TextInput } from 'react-native';
 import { Grupo } from '../../types/types';
@@ -333,7 +112,7 @@ const habilitarEdicao = () => {
                     <View style={styles.container}>
                         <View style={styles.buttonContainer}>
                             {edicaoHabilitada ? (
-                                <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+                                <TouchableOpacity style={styles.editButton} onPress={handleSave}>
                                     <Ionicons name="save" size={20} color="white" />
                                 </TouchableOpacity>
                             ) : (
@@ -354,13 +133,14 @@ const habilitarEdicao = () => {
                             value={grupo?.grupoID.toString()}
                             editable={edicaoHabilitada}
                         />
+                        <Text style={styles.label}>Nome do Grupo:</Text>
                         <TextInput
                             style={styles.input}
                             value={edicaoHabilitada ? nomeEditado : grupo?.nome || ''}
                             onChangeText={(text) => setNomeEditado(text)}
                             editable={edicaoHabilitada}
                         />
-    
+                        <Text style={styles.label}>Qtde Máxima:</Text>
                         <TextInput
                             style={styles.input}
                             value={edicaoHabilitada ? qtdeMaximaEditada : grupo?.qtdeMaxima?.toString() || ''}
@@ -368,7 +148,7 @@ const habilitarEdicao = () => {
                             keyboardType="numeric"
                             editable={edicaoHabilitada}
                         />
-    
+                        <Text style={styles.label}>Valor R$: </Text>
                         <TextInput
                             style={styles.input}
                             value={edicaoHabilitada ? valorEditado : grupo?.valor?.toString() || ''}
@@ -376,14 +156,14 @@ const habilitarEdicao = () => {
                             keyboardType="numeric"
                             editable={edicaoHabilitada}
                         />
-    
+                        <Text style={styles.label}>Data da Revelação:</Text>
                         <TextInput
                             style={styles.input}
                             value={edicaoHabilitada ? dataRevelacaoEditada : grupo?.dataRevelacao || ''}
                             onChangeText={(text) => setDataRevelacaoEditada(text)}
                             editable={edicaoHabilitada}
                         />
-    
+                        <Text style={styles.label}>Descrição do Grupo:</Text>
                         <TextInput
                             style={styles.input}
                             value={edicaoHabilitada ? descricaoGrupoEditada : grupo?.descricaoGrupo || ''}

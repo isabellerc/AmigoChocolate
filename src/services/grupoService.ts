@@ -112,15 +112,13 @@ class GrupoService {
 
   async updateGrupo(grupoID: number, novoGrupo: Grupo): Promise<boolean> {
     try {
-      // const response = await axios.put(`${BASE_URL}/Grupo/${grupoID}`, novoGrupo);
-
-
-        const response = await axios.put(`${BASE_URL}${grupoID}`, novoGrupo);
-        // const response = await axios.put(`${BASE_URL}?grupoID=${grupoID}`, novoGrupo);   
+      const response = await axios.put(`${BASE_URL}${grupoID}`, novoGrupo);
+      console.log('Dados do grupo:', novoGrupo); 
         console.log('Grupo atualizado:', response.data);
         return response.status === 200; // Retorna true se o grupo foi atualizado com sucesso
+        
     } catch (error) {
-        console.error('Erro ao atualizar grupo:', error);
+        console.error('Erro ao adicionar grupo:', error);
         return false; // Retorna false em caso de erro
     }
 }

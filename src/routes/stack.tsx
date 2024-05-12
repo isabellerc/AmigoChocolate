@@ -58,15 +58,15 @@ export default function StackComponent(){
       <NavigationContainer>
           <Stack.Navigator>
               <Stack.Screen  name="Login" component={Login}   options={{headerShown: false }}  />
-              <Stack.Screen  name="Home" component={Home} />
-              <Stack.Screen  name="Cadastro" component={Cadastro} options={{headerBackTitleVisible: false}}/>
-              <Stack.Screen  name="CriarGrupo" component={CriarGrupo}options={{headerBackTitleVisible: false}}/>
-              <Stack.Screen  name="EsqueciSenha" component={EsqueciSenha} options={{headerBackTitleVisible: false}}/>
-              <Stack.Screen name="EnviarConvite" component={EnviarConvite} options={{headerBackTitleVisible: false}}/>
+              <Stack.Screen  name="Home" component={Home} options={{headerTitle:''}} />
+              <Stack.Screen  name="Cadastro" component={Cadastro} options={{headerTitle:''}}/>
+              <Stack.Screen  name="CriarGrupo" component={CriarGrupo} options={{headerTitle:''}} />
+              <Stack.Screen  name="EsqueciSenha" component={EsqueciSenha} options={{headerTitle:''}} />
+              <Stack.Screen name="EnviarConvite" component={EnviarConvite} options={{headerTitle:''}} />
               {/* <Stack.Screen  name="Details" initialParams={{ grupoID: 1 }} component={Details} />
               <Stack.Screen  name="EditarGrupo" initialParams={{ grupoID: 1 }} component={EditarGrupo} /> */}
-              <Stack.Screen  name="Details" component={Details} options={{headerBackTitleVisible: false}}/>
-              <Stack.Screen  name="EditarGrupo" component={EditarGrupo} options={{headerBackTitleVisible: false}}/>
+              <Stack.Screen  name="Details" component={Details} options={{headerTitle:''}} />
+              <Stack.Screen  name="EditarGrupo" component={EditarGrupo} options={{headerTitle:''}} />
           </Stack.Navigator>
       </NavigationContainer>
 

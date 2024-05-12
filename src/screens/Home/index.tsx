@@ -77,7 +77,7 @@ const Home = () => {
             />
 
             <TouchableOpacity onPress={() => handleCriarGrupo()} style={styles.button}> 
-                        <Text style={styles.buttonText}>Criar Novo Grupo</Text>
+                        <Text style={styles.buttonText}>Novo Grupo</Text>
             </TouchableOpacity>
         </View>
     );
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     button: {
-        width: '20%',
+        width: '50%',
         height: 40,
         borderRadius: 20,
         backgroundColor: '#df59aa',
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#df59aa',
         marginBottom: 10,
-        marginTop: 10,
+        // marginTop: 10,
     },
     buttonText: {
         color: 'white',

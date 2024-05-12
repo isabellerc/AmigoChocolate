@@ -43,6 +43,13 @@ const Cadastro = () => {
 
   // Função para lidar com o upload dos dados do usuário
   const handleUpload = async () => {
+    // Verifica se o e-mail fornecido tem um formato válido
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      alert('Por favor, insira um endereço de e-mail válido.');
+      return;
+    }
+  
     try {
       const user: User = {
         id: 0,
@@ -51,7 +58,7 @@ const Cadastro = () => {
         confirmaSenha: confirmaSenha,
         icone: image
       };
-
+  
       const userAdded = await userService.addUser(user);
       if (userAdded) {
         console.log('Usuário adicionado com sucesso!');
@@ -62,6 +69,7 @@ const Cadastro = () => {
       console.error('Error uploading image:', error);
     }
   };
+  
 
   return (
     <View style={styles.container}>
@@ -82,11 +90,13 @@ const Cadastro = () => {
         value={nome}
       />
       <TextInput
-        style={styles.input}
-        placeholder="Email"
-        onChangeText={setEmail}
-        value={email}
+      style={styles.input}
+      placeholder="Email"
+      onChangeText={setEmail}
+      value={email}
+      keyboardType="email-address" // Adiciona esta linha para configurar o teclado para entrada de e-mail
       />
+
       <TextInput
         style={styles.input}
         placeholder="Senha"
