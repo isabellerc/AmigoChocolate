@@ -1,24 +1,24 @@
 import { ImageSourcePropType } from 'react-native';
 
-export interface User {
-    id: number;
-    nome: string;
-    senha: string;
-    confirmaSenha: string;
+export interface Participante {
+    IDParticipante?: number;
+    NomeParticipante: string;
+    EmailParticipante: string;
+    SenhaParticipante: string;
     // icone: ImageSourcePropType;
-    icone: string | null;
+    //icone: string | null;
   }
 
 
   export interface Grupo {
-    grupoID: number;
-    nome: string;
-    qtdeMaxima: number;
-    valor: number;
-    dataRevelacao: string;
-    descricaoGrupo: string;
+    IDGrupo?: number;
+    NomeGrupo: string;
+    QuantidadeMaxima: number;
+    ValorChocolate: number;
+    DataRevelacao: Date;
+    Descricao: string;
     // icone: ImageSourcePropType;
-    icone: string | null;
+    Icone?: string | null;
   }
 
 

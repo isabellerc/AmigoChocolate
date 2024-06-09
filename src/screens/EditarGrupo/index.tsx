@@ -285,6 +285,8 @@
 
 // // export default EditarGrupo;
 
+// 2º vez que eu comente:
+
 import React, { useState, useEffect } from 'react';
 import { View, Text , Image, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import { Grupo } from '../../types/types';
@@ -351,17 +353,17 @@ const EditarGrupo = ({ route }: any) => {
             }
     
             const novoGrupo: Grupo = {
-                grupoID: grupo.grupoID,
-                nome: nomeEditado,
-                qtdeMaxima: parseInt(qtdeMaximaEditada),
-                valor: parseFloat(valorEditado),
-                dataRevelacao: dataRevelacaoEditada,
-                descricaoGrupo: descricaoGrupoEditada,
-                icone: grupo.icone
+                IDGrupo: grupo.IDGrupo,
+                NomeGrupo: nomeEditado,
+                QuantidadeMaxima: parseInt(qtdeMaximaEditada),
+                ValorChocolate: parseFloat(valorEditado),
+                DataRevelacao: dataRevelacaoEditada,
+                Descricao: descricaoGrupoEditada
+                //icone: grupo.icone
             };
     
             // Atualiza os dados do grupo com os valores editados
-            await grupoService.updateGrupo(grupo.grupoID, novoGrupo);
+            await grupoService.editarGrupo(grupo.IDGrupo, novoGrupo);
     
             // Atualiza o estado do grupo com os novos dados
             setGrupo(novoGrupo);
@@ -405,14 +407,14 @@ const EditarGrupo = ({ route }: any) => {
                         <Text style={styles.label}>ID:</Text>
                         <TextInput
                             style={styles.input}
-                            value={grupo?.grupoID.toString()}
+                            value={grupo?.IDGrupo?.toString()}
                             editable={edicaoHabilitada}
                         />
 
                         <Text style={styles.label}>Nome:</Text>
                         <TextInput
                             style={styles.input}
-                            value={grupo?.nome || "-"}
+                            value={grupo?.NomeGrupo || "-"}
                             editable={edicaoHabilitada}
                             onChangeText={setNomeEditado} // Atualiza o estado do nome editado
                         />
@@ -420,7 +422,7 @@ const EditarGrupo = ({ route }: any) => {
                         <Text style={styles.label}>Quantidade Máxima:</Text>
                         <TextInput
                             style={styles.input}
-                            value={grupo?.qtdeMaxima?.toString()}
+                            value={grupo?.QuantidadeMaxima?.toString()}
                             editable={edicaoHabilitada}
                             onChangeText={setQtdeMaximaEditada} // Atualiza o estado da quantidade editada
                         />
@@ -428,7 +430,7 @@ const EditarGrupo = ({ route }: any) => {
                         <Text style={styles.label}>Valor:</Text>
                         <TextInput
                             style={styles.input}
-                            value={grupo?.valor?.toString()}
+                            value={grupo?.ValorChocolate?.toString()}
                             editable={edicaoHabilitada}
                             onChangeText={setValorEditado} // Atualiza o estado do valor editado
                         />
@@ -436,7 +438,7 @@ const EditarGrupo = ({ route }: any) => {
                         <Text style={styles.label}>Data de Revelação:</Text>
                         <TextInput
                             style={styles.input}
-                            value={grupo?.dataRevelacao || "-"}
+                            value={grupo?.DataRevelacao || "-"}
                             editable={edicaoHabilitada}
                             onChangeText={setDataRevelacaoEditada} // Atualiza o estado da data editada
                         />
@@ -444,7 +446,7 @@ const EditarGrupo = ({ route }: any) => {
                         <Text style={styles.label}>Descrição do Grupo:</Text>
                         <TextInput
                             style={styles.input}
-                            value={grupo?.descricaoGrupo || "-"}
+                            value={grupo?.Descricao || "-"}
                             editable={edicaoHabilitada}
                             onChangeText={setDescricaoGrupoEditada} // Atualiza o estado da descrição editada
                         />
@@ -550,6 +552,5 @@ const styles = StyleSheet.create({
 });
 
 export default EditarGrupo;
-
 
 

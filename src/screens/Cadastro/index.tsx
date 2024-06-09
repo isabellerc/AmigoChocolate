@@ -5,16 +5,16 @@ import { StackTypes } from '../../routes/stack'; // Importa tipos específicos p
 import * as ImagePicker from 'expo-image-picker'; // Importa o módulo ImagePicker do pacote 'expo-image-picker' para seleção de imagens
 import { FontAwesome5 } from '@expo/vector-icons'; // Importa o ícone FontAwesome5 do pacote '@expo/vector-icons'
 import UserService from '../../services/userService'; // Importa a classe UserService do arquivo '../../services/userService'
-import { User } from '../../types/types'; // Importa o tipo User do arquivo '../../types/types'
+import { Participante } from '../../types/types'; // Importa o tipo User do arquivo '../../types/types'
 import { Image } from 'react-native'; // Importa o componente Image do React Native para exibir imagens
 
 const Cadastro = () => {
   // Estados para armazenar os dados do usuário e a imagem selecionada
-  const [nome, setNome] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [senha, setSenha] = useState<string>('');
-  const [confirmaSenha, setConfirmaSenha] = useState<string>('');
-  const [image, setImage] = useState('');
+  const [NomeParticipante, setNome] = useState<string>('');
+  const [EmailParticipante, setEmail] = useState<string>('');
+  const [SenhaParticipante, setSenha] = useState<string>('');
+  //const [confirmaSenha, setConfirmaSenha] = useState<string>('');
+  //const [image, setImage] = useState('');
 
   // Navegação para a tela de login
   const navigation = useNavigation<StackTypes>();
@@ -23,44 +23,47 @@ const Cadastro = () => {
   };
 
   // Função para selecionar uma imagem da biblioteca
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+  // const pickImage = async () => {
+  //   let result = await ImagePicker.launchImageLibraryAsync({
+  //     mediaTypes: ImagePicker.MediaTypeOptions.All,
+  //     allowsEditing: true,
+  //     aspect: [4, 3],
+  //     quality: 1,
+  //   });
 
-    console.log(result);
+  //   console.log(result);
 
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-    }
-  };
+  //   if (!result.canceled) {
+  //     setImage(result.assets[0].uri);
+  //   }
+  // };
 
   // Instanciação do serviço de usuário
   const userService = new UserService();
+
+  
 
   // Função para lidar com o upload dos dados do usuário
   const handleUpload = async () => {
     // Verifica se o e-mail fornecido tem um formato válido
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
+    if (!emailPattern.test(EmailParticipante)) {
       alert('Por favor, insira um endereço de e-mail válido.');
       return;
     }
+    
   
     try {
-      const user: User = {
-        id: 0,
-        nome: nome,
-        senha: senha,
-        confirmaSenha: confirmaSenha,
-        icone: image
+      const novoParticipante: Participante = {
+        //IDParticipante: 0,
+        NomeParticipante: NomeParticipante,
+        EmailParticipante: EmailParticipante,
+        SenhaParticipante: SenhaParticipante
+        //icone: image
       };
   
-      const userAdded = await userService.addUser(user);
-      if (userAdded) {
+      const participanteAdded = await userService.addUser(novoParticipante);
+      if (participanteAdded) {
         console.log('Usuário adicionado com sucesso!');
       } else {
         console.log('Erro ao adicionar usuário');
@@ -74,7 +77,7 @@ const Cadastro = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Cadastrar-se</Text>
-      <View style={styles.imageContainer}>
+      {/* <View style={styles.imageContainer}>
         {image ? (
           <Image source={{ uri: image }} style={styles.image} />
         ) : (
@@ -82,18 +85,18 @@ const Cadastro = () => {
             <FontAwesome5 name="camera-retro" size={40} color="#df59aa" />
           </TouchableOpacity>
         )}
-      </View>
+      </View> */}
       <TextInput
         style={styles.input}
         placeholder="Nome"
         onChangeText={setNome}
-        value={nome}
+        value={NomeParticipante}
       />
       <TextInput
       style={styles.input}
       placeholder="Email"
       onChangeText={setEmail}
-      value={email}
+      value={EmailParticipante}
       keyboardType="email-address" // Adiciona esta linha para configurar o teclado para entrada de e-mail
       />
 
@@ -102,15 +105,15 @@ const Cadastro = () => {
         placeholder="Senha"
         secureTextEntry={true}
         onChangeText={setSenha}
-        value={senha as string}
+        value={SenhaParticipante as string}
       />
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         placeholder="Confirme sua senha"
         secureTextEntry={true}
         onChangeText={setConfirmaSenha}
         value={confirmaSenha as string}
-      />
+      /> */}
       <TouchableOpacity onPress={handleUpload} style={styles.button} activeOpacity={0.1}>
         <Text style={styles.buttonText}>Criar</Text>
       </TouchableOpacity>
