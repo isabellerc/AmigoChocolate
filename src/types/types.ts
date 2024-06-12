@@ -15,7 +15,8 @@ export interface Participante {
     NomeGrupo: string;
     QuantidadeMaxima: number;
     ValorChocolate: number;
-    DataRevelacao: Date;
+    //colocar date:
+    DataRevelacao: string;
     Descricao: string;
     // icone: ImageSourcePropType;
     Icone?: string | null;

@@ -93,7 +93,87 @@
 import axios, { AxiosResponse } from 'axios';
 import { Grupo } from '../types/types';
 
+// const BASE_URL = 'https://localhost:7146/api/Grupos';
+// const formatDate = (date: Date): string => {
+//   const year = date.getFullYear();
+//   const month = String(date.getMonth() + 1).padStart(2, '0');
+//   const day = String(date.getDate()).padStart(2, '0');
+//   const hours = String(date.getHours()).padStart(2, '0');
+//   const minutes = String(date.getMinutes()).padStart(2, '0');
+//   const seconds = String(date.getSeconds()).padStart(2, '0');
+//   return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+// };
+
+// export default class GrupoService {
+//   async criarGrupo(novoGrupo: Grupo): Promise<boolean> {
+//     try {
+//       const formData = new FormData();
+//       formData.append('NomeGrupo', novoGrupo.NomeGrupo);
+//       formData.append('QuantidadeMaxima', novoGrupo.QuantidadeMaxima.toString());
+//       formData.append('ValorChocolate', novoGrupo.ValorChocolate.toString());
+//       formData.append('DataRevelacao', formatDate(new Date(novoGrupo.DataRevelacao)));
+//       formData.append('Descricao', novoGrupo.Descricao);
+//       //
+//       // formData.append('NomeGrupo', novoGrupo.NomeGrupo);
+//       // formData.append('QuantidadeMaxima', novoGrupo.QuantidadeMaxima.toString());
+//       // formData.append('ValorChocolate', novoGrupo.ValorChocolate.toString());
+//       // // formData.append('DataRevelacao', novoGrupo.DataRevelacao.toString());
+//       // formData.append('DataRevelacao', formatDate(new Date(novoGrupo.DataRevelacao)));
+//       // formData.append('Descricao', novoGrupo.Descricao);
+//       // if (novoGrupo.Icone) {
+//       //   formData.append('Icone', {
+//       //     uri: novoGrupo.Icone,
+//       //     name: 'icone.jpg',
+//       //     type: 'image/jpeg'
+//       //   } as any); // A definição de tipo 'any' é para evitar problemas de tipo, mas ajuste conforme necessário
+//       // }
+
+//       //tirar a / qualquer coisa antes do post
+//       const response = await axios.post(BASE_URL + '/Post', formData, {
+//         headers: {
+//           'Content-Type': 'multipart/form-data',
+//         },
+//       });
+
+//       return response.status === 201;
+//     } catch (error) {
+//       console.error('Erro ao adicionar grupo:', error);
+//       return false;
+//     }
+//   }
+
+  
+
+//     async buscarGrupos(): Promise<Grupo[]> {
+//       const response = await fetch('https://localhost:7146/api/Grupos/Get');
+//       const data = await response.json();
+
+//       // Mapear os campos retornados pela API para os campos esperados
+//       const grupos: Grupo[] = data.map((grupo: any) => ({
+//           IDGrupo: grupo.idGrupo,
+//           NomeGrupo: grupo.nomeGrupo,
+//           QuantidadeMaxima: grupo.quantidadeMaxima,
+//           ValorChocolate: grupo.valorChocolate,
+//           DataRevelacao: grupo.DataRevelacao.ToString("yyyy-MM-ddTHH:mm:ss"),
+//           //DataRevelacao: grupo.dataRevelacao,
+//           Descricao: grupo.descricao,
+//           Icone: grupo.icone,
+//       }));
+
+//       return grupos;
+//     }
+
 const BASE_URL = 'https://localhost:7146/api/Grupos';
+
+const formatDate = (date: Date): string => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+};
 
 export default class GrupoService {
   async criarGrupo(novoGrupo: Grupo): Promise<boolean> {
@@ -102,17 +182,9 @@ export default class GrupoService {
       formData.append('NomeGrupo', novoGrupo.NomeGrupo);
       formData.append('QuantidadeMaxima', novoGrupo.QuantidadeMaxima.toString());
       formData.append('ValorChocolate', novoGrupo.ValorChocolate.toString());
-      formData.append('DataRevelacao', novoGrupo.DataRevelacao.toString());
+      formData.append('DataRevelacao', formatDate(new Date(novoGrupo.DataRevelacao)));
       formData.append('Descricao', novoGrupo.Descricao);
-      // if (novoGrupo.Icone) {
-      //   formData.append('Icone', {
-      //     uri: novoGrupo.Icone,
-      //     name: 'icone.jpg',
-      //     type: 'image/jpeg'
-      //   } as any); // A definição de tipo 'any' é para evitar problemas de tipo, mas ajuste conforme necessário
-      // }
 
-      //tirar a / qualquer coisa antes do post
       const response = await axios.post(BASE_URL + '/Post', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -126,47 +198,69 @@ export default class GrupoService {
     }
   }
 
-  // async buscarGrupos(): Promise<Grupo[]> {
-  //     try {
-  //         // const response: AxiosResponse<Grupo[]> = await axios.get(`${BASE_URL} + 'Get'`);
-  //         const response = await axios.get(`${BASE_URL}/Get`);
-  //         return response.data;
-  //     } catch (error) {
-  //         console.error('Erro ao buscar grupos:', error);
-  //         return []; // Retorna um array vazio em caso de erro
-  //     }
-  //   }
+  async buscarGrupos(): Promise<Grupo[]> {
+    try {
+        const response = await fetch(`${BASE_URL}/buscarGrupos`);
 
-    async buscarGrupos(): Promise<Grupo[]> {
-      const response = await fetch('https://localhost:7146/api/Grupos/Get');
-      const data = await response.json();
+        // Verificar se a resposta HTTP foi bem-sucedida (status 200)
+        if (!response.ok) {
+            throw new Error(`Erro ao buscar grupos: ${response.status} - ${response.statusText}`);
+        }
 
-      // Mapear os campos retornados pela API para os campos esperados
-      const grupos: Grupo[] = data.map((grupo: any) => ({
-          IDGrupo: grupo.idGrupo,
-          NomeGrupo: grupo.nomeGrupo,
-          QuantidadeMaxima: grupo.quantidadeMaxima,
-          ValorChocolate: grupo.valorChocolate,
-          DataRevelacao: grupo.dataRevelacao,
-          Descricao: grupo.descricao,
-          Icone: grupo.icone,
-      }));
+        // Converter a resposta para JSON
+        const data = await response.json();
 
-      return grupos;
+        // Verificar se os dados retornados são um array
+        if (!Array.isArray(data)) {
+            throw new Error(`Erro ao buscar grupos: os dados retornados não são um array`);
+        }
+
+        // Mapear os dados para objetos do tipo Grupo
+        const grupos: Grupo[] = data.map((grupo: any) => ({
+            IDGrupo: grupo.idGrupo,
+            NomeGrupo: grupo.nomeGrupo,
+            QuantidadeMaxima: grupo.quantidadeMaxima,
+            ValorChocolate: grupo.valorChocolate,
+            DataRevelacao: new Date(grupo.dataRevelacao).toISOString(), // Convertendo para ISO string
+            Descricao: grupo.descricao,
+            Icone: grupo.icone,
+        }));
+
+        return grupos;
+    } catch (error) {
+        console.error('Erro ao buscar grupos:', error);
+        return [];
     }
+}
 
-    async buscarGrupoPorID(id: number): Promise<Grupo | null> {
-      try {
-          const response: AxiosResponse<Grupo> = await axios.get(`${BASE_URL}/BuscarGrupoPorID/${id}`);
-          if (response.status === 200) {
-              return response.data;
-          }
-          return null;
-      } catch (error) {
-          console.error('Erro ao buscar grupo por ID:', error);
-          return null;
-      }
-  }
+
+
+
+
+
+  //   async buscarGrupoPorID(id: number): Promise<Grupo | null> {
+  //     try {
+  //         const response: AxiosResponse<Grupo> = await axios.get(`${BASE_URL}/BuscarGrupoPorID/${id}`);
+  //         if (response.status === 200) {
+  //             return response.data;
+  //         }
+  //         return null;
+  //     } catch (error) {
+  //         console.error('Erro ao buscar grupo por ID:', error);
+  //         return null;
+  //     }
+  // }
+
+  async BuscarGrupoPorID(grupoID: number): Promise<Grupo | null> {
+    try {
+        const response = await axios.get(`${BASE_URL}/BuscarGrupoPorID/${grupoID}`);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao buscar grupo por ID:', error);
+        return null;
+    }
+}
+
 
   async editarGrupo(id: number, grupo: Grupo): Promise<boolean> {
       try {

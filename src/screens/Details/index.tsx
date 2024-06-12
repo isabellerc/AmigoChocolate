@@ -301,8 +301,8 @@ const Details = ({ route }: any) => {
     const [nomeEditado, setNomeEditado] = useState('');
     const [qtdeMaximaEditada, setQtdeMaximaEditada] = useState('');
     const [valorEditado, setValorEditado] = useState('');
-    //const [dataRevelacaoEditada, setDataRevelacaoEditada] = useState('');
-    const [dataRevelacaoEditada, setDataRevelacaoEditada] = useState<Date | null>(null); // Alterado para Date
+    const [dataRevelacaoEditada, setDataRevelacaoEditada] = useState('');
+    //const [dataRevelacaoEditada, setDataRevelacaoEditada] = useState<Date | null>(null); // Alterado para Date
     const [descricaoGrupoEditada, setDescricaoGrupoEditada] = useState('');
 
     const grupoService = new GrupoService();
@@ -310,7 +310,7 @@ const Details = ({ route }: any) => {
     useEffect(() => {
         const fetchGrupo = async () => {
             try {
-                const fetchedGrupo: Grupo | null = await grupoService.buscarGrupoPorID(route.params.grupoID || 0);
+                const fetchedGrupo: Grupo | null = await grupoService.BuscarGrupoPorID(route.params.grupoID || 0);
                 if (fetchedGrupo != null && Array.isArray(fetchedGrupo)) {
                     setGrupo(fetchedGrupo[0]);
                 } else {
@@ -332,7 +332,8 @@ const Details = ({ route }: any) => {
         setNomeEditado(grupo?.NomeGrupo || '');
         setQtdeMaximaEditada(grupo?.QuantidadeMaxima?.toString() || '');
         setValorEditado(grupo?.ValorChocolate?.toString() || '');
-        setDataRevelacaoEditada(grupo?.DataRevelacao || null); // Alterado para Date
+        //setDataRevelacaoEditada(grupo?.DataRevelacao || null); // Alterado para Date
+        setDataRevelacaoEditada(grupo?.DataRevelacao || '');
         setDescricaoGrupoEditada(grupo?.Descricao || '');
     };
 
@@ -345,8 +346,8 @@ const Details = ({ route }: any) => {
                 NomeGrupo: nomeEditado,
                 QuantidadeMaxima: parseInt(qtdeMaximaEditada),
                 ValorChocolate: parseFloat(valorEditado),
-                //DataRevelacao: dataRevelacaoEditada,
-                DataRevelacao: dataRevelacaoEditada || new Date(), // Garante que seja sempre uma data
+                DataRevelacao: dataRevelacaoEditada,
+                //DataRevelacao: dataRevelacaoEditada || new Date(), // Garante que seja sempre uma data
                 Descricao: descricaoGrupoEditada,
             };
 
@@ -363,10 +364,10 @@ const Details = ({ route }: any) => {
         navigation.navigate('EnviarConvite');
     };
 
-    const handleDataRevelacaoChange = (text: string) => {
-        const date = text ? new Date(text) : null;
-        setDataRevelacaoEditada(date);
-    };
+    // const handleDataRevelacaoChange = (text: string) => {
+    //     const date = text ? new Date(text) : null;
+    //     setDataRevelacaoEditada(date);
+    // };
 
     return (
         <View style={styles.container}>
@@ -426,8 +427,8 @@ const Details = ({ route }: any) => {
                         <Text style={styles.label}>Data da Revelação:</Text>
                         <TextInput
                             style={styles.input}
-                            value={edicaoHabilitada ? (dataRevelacaoEditada ? dataRevelacaoEditada.toISOString() : '') : grupo?.DataRevelacao?.toISOString() || ''}
-                            onChangeText={handleDataRevelacaoChange}
+                            value={edicaoHabilitada ? dataRevelacaoEditada : grupo?.DataRevelacao || ''}
+                            onChangeText={(text) => setDataRevelacaoEditada(text)}
                             editable={edicaoHabilitada}
                         />
                         <Text style={styles.label}>Descrição do Grupo:</Text>
