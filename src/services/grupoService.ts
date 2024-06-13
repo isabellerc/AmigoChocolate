@@ -253,8 +253,17 @@ export default class GrupoService {
 
   async BuscarGrupoPorID(grupoID: number): Promise<Grupo | null> {
     try {
-        const response = await axios.get(`${BASE_URL}/BuscarGrupoPorID/${grupoID}`);
-        return response.data;
+        const response = await axios.get(`${BASE_URL}/BuscarGrupoPorID?id=${grupoID}`);
+       
+        const auxGrupo: Grupo = {
+          NomeGrupo: response.data.nomeGrupo,
+          QuantidadeMaxima: response.data.quantidadeMaxima,
+          ValorChocolate: response.data.valorChocolate,
+          DataRevelacao: response.data.dataRevelacao,
+          //DataRevelacao: dataRevelacaoEditada || new Date(), // Garante que seja sempre uma data
+          Descricao: response.data.descricao,
+      };
+        return auxGrupo;
     } catch (error) {
         console.error('Erro ao buscar grupo por ID:', error);
         return null;

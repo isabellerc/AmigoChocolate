@@ -185,7 +185,7 @@ const Login = () => {
                 <Text style={styles.link}>Esqueci minha senha.</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleCadastro}>
-                <Text style={styles.link}>Não tem uma conta? Faça o cadastro.</Text>
+                <Text style={styles.link}>Faça o cadastro.</Text>
             </TouchableOpacity>
         </View>
     );

@@ -311,8 +311,13 @@ const Details = ({ route }: any) => {
         const fetchGrupo = async () => {
             try {
                 const fetchedGrupo: Grupo | null = await grupoService.BuscarGrupoPorID(route.params.grupoID || 0);
-                if (fetchedGrupo != null && Array.isArray(fetchedGrupo)) {
-                    setGrupo(fetchedGrupo[0]);
+                console.log('oi');  
+             
+                if (fetchedGrupo != null) {
+                    console.log(fetchedGrupo);
+                  
+                    setGrupo(fetchedGrupo);
+                    
                 } else {
                     setError('Grupo não encontrado ' + route.params.grupoID + '.');
                 }
