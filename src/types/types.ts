@@ -1,13 +1,15 @@
 import { ImageSourcePropType } from 'react-native';
 
 export interface Participante {
-    IDParticipante?: number;
-    NomeParticipante: string;
-    EmailParticipante: string;
-    SenhaParticipante: string;
-    // icone: ImageSourcePropType;
-    //icone: string | null;
-  }
+  IDParticipante?: number;
+  NomeParticipante: string;
+  EmailParticipante: string;
+  SenhaParticipante: string;
+  // Descomente e ajuste se estiver lidando com ícones
+  // icone: ImageSourcePropType;
+  // icone: string | null;
+}
+
 
 
   export interface Grupo {
