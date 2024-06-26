@@ -35,7 +35,7 @@ export default class ParticipanteService {
 
     async buscarParticipantes(): Promise<Participante[]> {
         try {
-            const response: AxiosResponse<Participante[]> = await axios.get(`${BASE_URL}/Participantes/buscarParticipantes`);
+            const response: AxiosResponse<Participante[]> = await axios.get(`${BASE_URL}/Participantes`);
             return response.data;
         } catch (error) {
             console.error('Erro ao buscar participantes:', error);

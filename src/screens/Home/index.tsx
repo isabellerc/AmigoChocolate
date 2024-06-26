@@ -34,36 +34,13 @@ const Home = () => {
         navigation.navigate('CriarGrupo');
     };
 
-    // const handleEdit = (grupoID: number) => {
-    //     navigation.navigate('Details', { grupoID });
-    // };
-
-    // const handleEdit = (grupoID: number | undefined) => {
-    //     if (grupoID !== undefined) {
-    //         console.log('Navigating to Details for grupoID:', grupoID); // Adicionado para depuração
-    //         navigation.navigate('Details', { grupoID });
-    //     } else {
-    //         console.error('grupoID is undefined');
-    //     }
-    // };
-
     const handleEdit = (grupoID: number) => {
         console.log('Navigating to Details for grupoID:', grupoID);
         navigation.navigate('Details', { grupoID });
     };
     
     
-    // codigo sem os logs
-    // const renderItem = ({ item }: { item: Grupo }) => (
-    //     <View style={styles.item}>
-    //         <TouchableOpacity onPress={() => item.IDGrupo !== undefined && handleEdit(item.IDGrupo)}>
-    //             <View style={styles.grupoInfo}>
-    //                 <Image source={caixaPresente} style={styles.photo} resizeMode="contain" />
-    //                 <Text style={styles.grupoInfoText}>{item.NomeGrupo}</Text>
-    //             </View>
-    //         </TouchableOpacity>
-    //     </View>
-    // );
+    
     const renderItem = ({ item }: { item: Grupo }) => (
         <View style={styles.item}>
             <TouchableOpacity onPress={() => {

@@ -73,19 +73,15 @@ const Details = ({ route }: any) => {
         }
     };
 
-    const handleConvite = (grupoID: number) => {
-    console.log('Botão de convite pressionado');
-    console.log('Grupo:', grupo);
-    if (grupo && grupo.IDGrupo) {
-        console.log('Grupo ID:', grupo.IDGrupo);
-        navigation.navigate('AdicionarParticipante', { grupoID });
-        console.log('Navegação executada');
-    } else {
-        Alert.alert('Erro', 'ID do grupo não está definido.');
-    }
-};
+    const handleConvite = () => {
+        console.log('Botão de convite pressionado');
+        navigation.navigate('AdicionarParticipante', { grupoID: 1 }); 
+    };
 
-    
+    const handleSortear = () => {
+        console.log('Botão de sortear pressionado');
+        navigation.navigate('SortearScreen');
+    };
 
     return (
         <View style={styles.container}>
@@ -106,8 +102,8 @@ const Details = ({ route }: any) => {
                                     <Ionicons name="pencil" size={20} color="white" />
                                 </TouchableOpacity>
                             )}
-                            <TouchableOpacity style={styles.editButton} onPress={() => {grupo.IDGrupo !== undefined && handleConvite(grupo.IDGrupo)}}>
-                                <Ionicons name="paper-plane" size={20} color="white" />
+                            <TouchableOpacity style={styles.editButton} onPress={() => handleConvite()}>
+                                <Ionicons name="person-add" size={20} color="white" />
                             </TouchableOpacity>
                         </View>
 
@@ -156,6 +152,9 @@ const Details = ({ route }: any) => {
                             onChangeText={(text) => setDescricaoGrupoEditada(text)}
                             editable={edicaoHabilitada}
                         />
+                        <TouchableOpacity style={styles.buttonSortear} onPress={handleSortear}>
+                            <Text style={styles.buttonTextSortear}>Realizar Sorteio</Text>
+                        </TouchableOpacity>
                     </View>
                 )
             )}
@@ -210,6 +209,22 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
         alignSelf: 'center'
+    },
+
+    buttonSortear: {
+        width: '35%',
+        height: 40,
+        borderRadius: 20,
+        backgroundColor: '#df59aa',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#df59aa',
+        marginBottom: 10,
+    },
+    buttonTextSortear: {
+        color: 'white',
+        fontSize: 16,
     },
 });
 

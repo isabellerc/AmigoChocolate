@@ -24,6 +24,24 @@ export interface Participante {
     Icone?: string | null;
   }
 
+ // Atualize sua interface GrupoParticipante para refletir a estrutura correta
+export interface GrupoParticipante {
+  idGrupoParticipante: number;
+  idGrupo: number;
+  idParticipante: number;
+  participante: {
+      idParticipante: number;
+      nomeParticipante: string;
+      emailParticipante: string;
+  };
+  grupo: {
+      idGrupo: number;
+      nomeGrupo: string;
+      descricao: string;
+  };
+}
+
+
 
 
 
